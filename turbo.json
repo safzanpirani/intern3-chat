@@ -1,16 +1,36 @@
 {
-    "$schema": "https://turbo.build/schema.json",
-    "tasks": {
+    "$schema": "https://turborepo.com/schema.json",
+    "globalDotEnv": [
+        "DATABASE_URL",
+        "BETTER_AUTH_SECRET",
+        "ENCRYPTION_KEY",
+        "EMAIL_PROVIDER",
+        "EMAIL_FROM",
+        "RESEND_API_KEY",
+        "AWS_ACCESS_KEY_ID",
+        "AWS_SECRET_ACCESS_KEY",
+        "AWS_REGION",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "GITHUB_CLIENT_ID",
+        "GITHUB_CLIENT_SECRET",
+        "TWITCH_CLIENT_ID",
+        "TWITCH_CLIENT_SECRET"
+    ],
+    "pipeline": {
         "build": {
             "dependsOn": ["^build"],
-            "outputs": [".output/**/*", ".vinxi/**/*", ".vercel/**/*"]
+            "outputs": [".output/**/*", ".vinxi/**/*", ".vercel/**/*", ".tanstack/start/build/**"]
+        },
+        "dev": {
+            "cache": false,
+            "persistent": true
+        },
+        "auth:migrate": {
+            "cache": false
         },
         "check-types": {
             "dependsOn": ["^check-types"]
-        },
-        "dev": {
-            "persistent": true,
-            "cache": false
         }
     }
 }
