@@ -1,6 +1,6 @@
 {
     "$schema": "https://turborepo.com/schema.json",
-    "globalDotEnv": [
+    "globalDependencies": [
         "DATABASE_URL",
         "BETTER_AUTH_SECRET",
         "ENCRYPTION_KEY",
